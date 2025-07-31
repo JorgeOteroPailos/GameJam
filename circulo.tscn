@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvvpjxan4t1s"]
+
+[ext_resource type="Texture2D" uid="uid://dh1fe0s04fixa" path="res://assets/circulo.png" id="1_gc35q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3p6c"]
+
+[node name="circulo" type="StaticBody2D"]
+
+[node name="Circulo" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+texture = ExtResource("1_gc35q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(1.64988, 1.05904)
+shape = SubResource("CircleShape2D_m3p6c")

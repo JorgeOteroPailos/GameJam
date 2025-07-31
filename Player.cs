@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public partial class Sprite2d : Node2D
+public partial class Player : CharacterBody2D
 {
 	public float Speed = 200f;
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Vector2.Zero;
 
@@ -18,10 +18,7 @@ public partial class Sprite2d : Node2D
 		if (Input.IsKeyPressed(Key.D))
 			velocity.X += 1;
 
-		if (velocity != Vector2.Zero)
-		{
-			Position += velocity.Normalized() * Speed * (float)delta;
-			GD.Print($"Position: {Position}");
-		}
+		Velocity = velocity.Normalized() * Speed;
+		MoveAndSlide();
 	}
 }
