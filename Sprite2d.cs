@@ -9,11 +9,19 @@ public partial class Sprite2d : Node2D
 	{
 		Vector2 velocity = Vector2.Zero;
 
-		if (Input.IsKeyPressed(Key.W)) velocity.Y -= 1;
-		if (Input.IsKeyPressed(Key.S)) velocity.Y += 1;
-		if (Input.IsKeyPressed(Key.A)) velocity.X -= 1;
-		if (Input.IsKeyPressed(Key.D)) velocity.X += 1;
+		if (Input.IsKeyPressed(Key.W))
+			velocity.Y -= 1;
+		if (Input.IsKeyPressed(Key.S))
+			velocity.Y += 1;
+		if (Input.IsKeyPressed(Key.A))
+			velocity.X -= 1;
+		if (Input.IsKeyPressed(Key.D))
+			velocity.X += 1;
 
-		Position += velocity.Normalized() * Speed * (float)delta;
+		if (velocity != Vector2.Zero)
+		{
+			Position += velocity.Normalized() * Speed * (float)delta;
+			GD.Print($"Position: {Position}");
+		}
 	}
 }
