@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c87ii7oaqqdmx"]
 
 [ext_resource type="Texture2D" uid="uid://c6x2r7nuygrw3" path="res://assets/P1050518.JPG" id="1_6ba58"]
-[ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://node_2d.tscn" id="2_fw4w5"]
+[ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
 [ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://circulo.tscn" id="3_otwa2"]
 
 [node name="mundo" type="Node2D"]
