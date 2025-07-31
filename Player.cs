@@ -30,10 +30,10 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Vector2.Zero;
 
-		if (Input.IsKeyPressed(Key.W)) velocity.Y -= 1;
-		if (Input.IsKeyPressed(Key.S)) velocity.Y += 1;
-		if (Input.IsKeyPressed(Key.A)) velocity.X -= 1;
-		if (Input.IsKeyPressed(Key.D)) velocity.X += 1;
+		if (Input.IsKeyPressed(Key.W)&&this.GlobalPosition.Y>0) velocity.Y -= 1;
+		if (Input.IsKeyPressed(Key.S)&&this.GlobalPosition.Y<640) velocity.Y += 1;
+		if (Input.IsKeyPressed(Key.A)&&this.GlobalPosition.X>0) velocity.X -= 1;
+		if (Input.IsKeyPressed(Key.D)&&this.GlobalPosition.X<1140) velocity.X += 1;
 
 		Velocity = velocity.Normalized() * Speed;
 		MoveAndSlide();

@@ -30,6 +30,11 @@ public partial class Bullet : Area2D
 	
 	private void OnBodyEntered(Node body)
 	{
+		if (body.HasMethod("OnHitByBullet"))
+		{
+			body.Call("OnHitByBullet", this); // Puedes pasar la bala como referencia
+		}
+
 		if(flag){
 			QueueFree(); // Elimina la bala		
 		}
