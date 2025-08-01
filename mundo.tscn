@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c87ii7oaqqdmx"]
+[gd_scene load_steps=7 format=3 uid="uid://c87ii7oaqqdmx"]
 
-[ext_resource type="Texture2D" uid="uid://bpfg13hcg7o2m" path="res://assets/pw.png" id="1_fw4w5"]
+[ext_resource type="Texture2D" uid="uid://d7q06xhm0evs" path="res://assets/Fondo_Noche_Estrellada.png" id="1_aou4a"]
 [ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
 [ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://circulo.tscn" id="3_otwa2"]
+[ext_resource type="Script" uid="uid://ctj347id36qo1" path="res://Pausa.cs" id="4_otwa2"]
+[ext_resource type="Texture2D" uid="uid://cqunxvulykp0l" path="res://assets/Corazones_UI.png" id="5_5ckkb"]
+[ext_resource type="Script" uid="uid://d3xwrwbi4fc5q" path="res://PauseMenu.cs" id="6_5ckkb"]
 
 [node name="mundo" type="Node2D"]
 
 [node name="P1050518" type="Sprite2D" parent="."]
-position = Vector2(623, 348)
-scale = Vector2(-1.72403, 0.841962)
-texture = ExtResource("1_fw4w5")
+position = Vector2(576, 324)
+texture = ExtResource("1_aou4a")
 
 [node name="Node2D" parent="." instance=ExtResource("2_fw4w5")]
-position = Vector2(503, 333)
+position = Vector2(499, 278)
 
 [node name="circulo" parent="." instance=ExtResource("3_otwa2")]
 position = Vector2(146, 390)
@@ -22,3 +24,35 @@ position = Vector2(434, 430)
 
 [node name="circulo3" parent="." instance=ExtResource("3_otwa2")]
 position = Vector2(279, 245)
+
+[node name="pausa" type="Node2D" parent="."]
+script = ExtResource("4_otwa2")
+
+[node name="CorazonesUi" type="Sprite2D" parent="."]
+position = Vector2(-215, 310)
+scale = Vector2(0.985231, 1)
+texture = ExtResource("5_5ckkb")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+script = ExtResource("6_5ckkb")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 35.0
+offset_bottom = 35.0
+scale = Vector2(29.0885, 16.6035)
+color = Color(0, 0, 0, 0.666667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+offset_left = 388.0
+offset_top = 233.0
+offset_right = 428.0
+offset_bottom = 273.0
+scale = Vector2(9.89115, 4.40587)
+
+[node name="Continuar" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Salir" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
