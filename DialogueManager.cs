@@ -2,8 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public partial class DialogueManager : Node
-{
+public partial class DialogueManager : Node {
 	[Export] public Label DialogueLabel;
 	[Export] public Label NameLabel;
 	[Export] public Sprite2D CharacterLeft;
@@ -13,8 +12,13 @@ public partial class DialogueManager : Node
 	private bool isTyping = false;
 	private string currentText = "";
 
-	private List<DialogueLine> dialogueLines = new List<DialogueLine>
-	{
+	private List<DialogueLine> dialogueLines = new List<DialogueLine> {
+		new DialogueLine(null, "They say the Devil bows to no one. He rules with pride and defiance, and he needs neither permission nor praise.", false, false, null, null),
+		new DialogueLine(null, "Eventually, the Devil’s boredom and curiosity drew him to a mortal unlike any other. She came with no crown, no army, just a simple brush.\nA painter whose strokes flayed deception, leaving only the raw, bleeding truth beneath.", false, false, null, null),
+		new DialogueLine(null, "Fascinated, the Devil demanded a portrait. And she delivered.", false, false, null, null),
+		new DialogueLine(null, "What stared back at him from the canvas was no majestic demon lord, no master of sin. It was him, unmasked, monstrous, and small.", false, false, null, null),
+		new DialogueLine("Devil", "What is the meaning of this?!", true, false, "res://assets/VN/angry_demon.png", null),
+		new DialogueLine(null, "Ashamed and enraged, he banished the painter to the depths of her own personal Hell.", false, false, null, null),
 		new DialogueLine("MC", "The mother of diosito, how lot of calor is there in hell", false, true, null, "res://assets/VN/defaultMC.png"),
 		new DialogueLine("???", "We don't have AC, you'll have to manage", true, false, "res://assets/VN/default_demon.png", null),
 		new DialogueLine("MC", "What is this guy saying, ma dude", false, true, null, "res://assets/VN/sadMC.png"),
@@ -24,30 +28,23 @@ public partial class DialogueManager : Node
 		new DialogueLine("MC", "ip ip ip", false, true, null, "res://assets/VN/motivatedMC.png"),
 	};
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		ShowNextDialogue();
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-		{
-			if (isTyping)
-			{
+	public override void _Input(InputEvent @event) {
+		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed) {
+			if (isTyping) {
 				SkipTyping();
 			}
-			else
-			{
+			else {
 				ShowNextDialogue();
 			}
 		}
 	}
 
-	private async void ShowNextDialogue()
-	{
-		if (currentIndex >= dialogueLines.Count)
-		{
+	private async void ShowNextDialogue() {
+		if (currentIndex >= dialogueLines.Count) {
 			GD.Print("Fin del diálogo.");
 			return;
 		}
@@ -70,13 +67,12 @@ public partial class DialogueManager : Node
 
 		isTyping = true;
 
-		foreach (char c in currentText)
-		{
+		foreach (char c in currentText) {
 			DialogueLabel.Text += c;
 			await ToSignal(GetTree().CreateTimer(0.03f), "timeout");
 
 			if (!isTyping)
-				break; // Si se salta el tipeo, se rompe el bucle
+				break; 
 		}
 
 		DialogueLabel.Text = currentText;
@@ -84,15 +80,12 @@ public partial class DialogueManager : Node
 		currentIndex++;
 	}
 
-	private void SkipTyping()
-	{
+	private void SkipTyping() {
 		DialogueLabel.Text = currentText;
 		isTyping = false;
-		currentIndex++;
 	}
 
-	private class DialogueLine
-	{
+	private class DialogueLine {
 		public string Speaker;
 		public string Text;
 		public bool LeftActive;
@@ -101,8 +94,7 @@ public partial class DialogueManager : Node
 		public string RightSpritePath;
 
 		public DialogueLine(string speaker, string text, bool leftActive, bool rightActive,
-							string leftSpritePath = null, string rightSpritePath = null)
-		{
+							string leftSpritePath = null, string rightSpritePath = null) {
 			Speaker = speaker;
 			Text = text;
 			LeftActive = leftActive;

@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://brw41ms5j7r0v"]
+[gd_scene load_steps=2 format=3 uid="uid://brw41ms5j7r0v"]
 
 [ext_resource type="Script" uid="uid://bdvo30so5um3g" path="res://DialogueManager.cs" id="1_xxy11"]
-[ext_resource type="Texture2D" uid="uid://dlw6kvphb53e0" path="res://assets/VN/default_demon.png" id="2_ydd33"]
-[ext_resource type="Texture2D" uid="uid://vimt8t0ngo08" path="res://assets/defaultMC.png" id="3_0cv4g"]
 
 [node name="visual_novel" type="Node2D" node_paths=PackedStringArray("DialogueLabel", "NameLabel", "CharacterLeft", "CharacterRight")]
 script = ExtResource("1_xxy11")
@@ -14,12 +12,10 @@ CharacterRight = NodePath("character_right")
 [node name="character_left" type="Sprite2D" parent="."]
 position = Vector2(301, 265)
 scale = Vector2(1.53472, 1.51671)
-texture = ExtResource("2_ydd33")
 
 [node name="character_right" type="Sprite2D" parent="."]
 position = Vector2(872.5, 297.5)
 scale = Vector2(1.31424, 1.28819)
-texture = ExtResource("3_0cv4g")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
