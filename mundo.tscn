@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c87ii7oaqqdmx"]
+[gd_scene load_steps=11 format=3 uid="uid://c87ii7oaqqdmx"]
 
 [ext_resource type="Texture2D" uid="uid://d7q06xhm0evs" path="res://assets/Fondo_Noche_Estrellada.png" id="1_aou4a"]
 [ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://ctj347id36qo1" path="res://Pausa.cs" id="4_otwa2"]
 [ext_resource type="Texture2D" uid="uid://cqunxvulykp0l" path="res://assets/Corazones_UI.png" id="5_5ckkb"]
 [ext_resource type="Script" uid="uid://d3xwrwbi4fc5q" path="res://PauseMenu.cs" id="6_5ckkb"]
+[ext_resource type="Texture2D" uid="uid://crqll8tl0f8ab" path="res://assets/Play_Button.png" id="7_pij3u"]
+[ext_resource type="Texture2D" uid="uid://dlq0r6bu20ihq" path="res://assets/Options_Button.png" id="8_0oi55"]
+[ext_resource type="Texture2D" uid="uid://cv273f2aq8210" path="res://assets/Menu_Button.png" id="9_57gmc"]
+[ext_resource type="Texture2D" uid="uid://5tsacpaxgdxh" path="res://assets/Exit_Button.png" id="10_0crsg"]
 
 [node name="mundo" type="Node2D"]
 
@@ -45,14 +49,26 @@ scale = Vector2(29.0885, 16.6035)
 color = Color(0, 0, 0, 0.666667)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-offset_left = 388.0
-offset_top = 233.0
-offset_right = 428.0
-offset_bottom = 273.0
-scale = Vector2(9.89115, 4.40587)
+offset_left = 421.0
+offset_top = 139.0
+offset_right = 595.0
+offset_bottom = 387.0
+scale = Vector2(1.77151, 1.65008)
+alignment = 1
 
 [node name="Continuar" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+icon = ExtResource("7_pij3u")
+icon_alignment = 1
+
+[node name="Options" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_0oi55")
+
+[node name="Menu" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("9_57gmc")
 
 [node name="Salir" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+icon = ExtResource("10_0crsg")
