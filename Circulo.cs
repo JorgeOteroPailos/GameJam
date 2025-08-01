@@ -35,10 +35,12 @@ public partial class Circulo : RigidBody2D
 		sprite.Texture = nuevaTextura;
 		
 		originalPos = GlobalPosition;
+		
+		var area = GetNode<Area2D>("DamageArea");
+		area.BodyEntered += OnBodyEntered;
 	}
 
-	public void OnHitByBullet(Node bullet, Player player)
-	{
+	public void OnHitByBullet(Node bullet, Player player){
 		if (bullet is Bullet bullet1)
 		{
 			if(bullet1.color!=this.color){
@@ -56,4 +58,12 @@ public partial class Circulo : RigidBody2D
 			}
 		}
 	}
+	
+	private void OnBodyEntered(Node body){
+		if (body is Player jugador){
+			GD.Print("Jugador tocado por enemigo");
+			jugador.takeDamage();
+		}
+	}
+	
 }

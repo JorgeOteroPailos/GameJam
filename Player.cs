@@ -123,6 +123,10 @@ public partial class Player : CharacterBody2D
 			health--;
 		}
 		updateLife();
+		
+		if(health<=0){
+			GetTree().Quit();
+		}
 	}
 	
 	private void updateLife(){
