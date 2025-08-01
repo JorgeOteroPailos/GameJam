@@ -4,7 +4,7 @@ using System;
 public partial class Bullet : Area2D
 {
 	private Texture2D nuevaTextura;
-	public int color;
+	public int color=0;
 	
 	public Player player;
 	public Vector2 Velocity = Vector2.Zero;
@@ -28,9 +28,7 @@ public partial class Bullet : Area2D
 				break;
 		}
 		
-		// Cargar la nueva textura desde la carpeta assets
-
-		// Obtener el nodo Sprite2D (ajusta el nombre si es diferente)
+		// Obtener el nodo Sprite2D 
 		Sprite2D sprite = GetNode<Sprite2D>("Sprite2D");
 
 		// Cambiar la textura
@@ -57,7 +55,7 @@ public partial class Bullet : Area2D
 	{
 		if (body.HasMethod("OnHitByBullet"))
 		{
-			body.Call("OnHitByBullet", this); // Puedes pasar la bala como referencia
+			body.Call("OnHitByBullet", this, this.player); // Puedes pasar la bala como referencia
 		}
 
 		if(flag){
