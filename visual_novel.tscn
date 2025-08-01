@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://brw41ms5j7r0v"]
+[gd_scene load_steps=3 format=3 uid="uid://brw41ms5j7r0v"]
 
 [ext_resource type="Script" uid="uid://bdvo30so5um3g" path="res://DialogueManager.cs" id="1_xxy11"]
+[ext_resource type="Texture2D" uid="uid://dd2parvc0ltiy" path="res://assets/firebg.png" id="2_6oq11"]
 
 [node name="visual_novel" type="Node2D" node_paths=PackedStringArray("DialogueLabel", "NameLabel", "CharacterLeft", "CharacterRight")]
 script = ExtResource("1_xxy11")
 DialogueLabel = NodePath("UI/textBox/dialogue_label")
-NameLabel = NodePath("UI/textBox/name_label")
+NameLabel = NodePath("UI/namePanel/name_label")
 CharacterLeft = NodePath("character_left")
 CharacterRight = NodePath("character_right")
 
@@ -20,20 +21,35 @@ scale = Vector2(1.31424, 1.28819)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="textBox" type="Panel" parent="UI"]
-offset_left = -1.0
+offset_left = 14.0
 offset_top = 482.0
-offset_right = 1152.0
-offset_bottom = 649.0
-
-[node name="name_label" type="Label" parent="UI/textBox"]
-layout_mode = 0
-offset_left = 3.0
-offset_right = 166.0
-offset_bottom = 30.0
+offset_right = 1139.0
+offset_bottom = 634.0
 
 [node name="dialogue_label" type="Label" parent="UI/textBox"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 32.0
-offset_right = 1152.0
-offset_bottom = 157.0
+offset_left = 29.0
+offset_top = 38.0
+offset_right = 1113.0
+offset_bottom = 138.0
+
+[node name="namePanel" type="Panel" parent="UI"]
+offset_left = 14.0
+offset_top = 440.0
+offset_right = 140.0
+offset_bottom = 480.0
+
+[node name="name_label" type="Label" parent="UI/namePanel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 91.0
+offset_bottom = 31.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1000
+position = Vector2(583.5, 306)
+scale = Vector2(0.344286, 0.356526)
+texture = ExtResource("2_6oq11")

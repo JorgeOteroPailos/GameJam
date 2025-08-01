@@ -18,19 +18,19 @@ public partial class DialogueManager : Node {
 		new DialogueLine(null, "Fascinated, the Devil demanded a portrait. And she delivered.", false, false, null, null),
 		new DialogueLine(null, "What stared back at him from the canvas was no majestic demon lord, no master of sin. It was him, unmasked, monstrous, and small.", false, false, null, null),
 		new DialogueLine("Devil", "What is the meaning of this?!", true, false, "res://assets/VN/angry_demon.png", null),
-		new DialogueLine("MC", "This is your true self. I am faithful to the strokes of my brush.", false, true, null, "res://assets/VN/defaultMC.png"),
-		new DialogueLine("Devil", "That... That hideous creature cannot be me!", true, false, "res://assets/VN/angry_demon.png", null),
-		new DialogueLine("MC", "My apologies. Yet, please understand that my brush only speaks truth.", false, true, null, "res://assets/VN/sadMC.png"),
-		new DialogueLine(null, "Ashamed and enraged, he banished the painter to the depths of her own personal Hell.", false, false, null, null),
+		new DialogueLine("MC", "This is your true self. I am faithful to the strokes of my brush.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Devil", "That... That hideous creature cannot be me!", true, false, "res://assets/VN/angry_demon.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("MC", "My apologies. Yet, please understand that my brush only speaks truth.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/sadMC.png"),
+		new DialogueLine(null, "Ashamed and enraged, he banished the painter to the depths of her own personal Hell.", false, false, "res://assets/VN/angry_demon.png", "res://assets/VN/sadMC.png"),
 		new DialogueLine("Devil", "Foolish kid. That will teach her.", true, false, "res://assets/VN/default_demon.png", null),
 		
 		new DialogueLine("MC", "The mother of diosito, how lot of calor is there in hell", false, true, null, "res://assets/VN/defaultMC.png"),
-		new DialogueLine("???", "We don't have AC, you'll have to manage", true, false, "res://assets/VN/default_demon.png", null),
-		new DialogueLine("MC", "What is this guy saying, ma dude", false, true, null, "res://assets/VN/sadMC.png"),
-		new DialogueLine("???", "CALA NENA! Vai sachar o campo", true, false, "res://assets/VN/angry_demon.png", null),	
-		new DialogueLine("MC", "Respeta, bro", false, true, null, "res://assets/VN/angryMC.png"),
-		new DialogueLine("???", "Turip", true, false, "res://assets/VN/amused_demon.png", null),	
-		new DialogueLine("MC", "ip ip ip", false, true, null, "res://assets/VN/motivatedMC.png"),
+		new DialogueLine("???", "We don't have AC, you'll have to manage", true, false, "res://assets/VN/default_spirit.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("MC", "What is this guy saying, ma dude", false, true, "res://assets/VN/default_spirit.png", "res://assets/VN/sadMC.png"),
+		new DialogueLine("Spirit", "I'm a spirit from this realm. CALA NENA! Vai sachar o campo", true, false, "res://assets/VN/disappointed_spirit.png", "res://assets/VN/sadMC.png"),	
+		new DialogueLine("MC", "Respeta, bro", false, true, "res://assets/VN/disappointed_spirit.png", "res://assets/VN/angryMC.png"),
+		new DialogueLine("Spirit", "Turip", true, false, "res://assets/VN/surprised_spirit.png", "res://assets/VN/angryMC.png"),	
+		new DialogueLine("MC", "ip ip ip", false, true, "res://assets/VN/surprised_spirit.png", "res://assets/VN/motivatedMC.png"),
 	};
 
 	public override void _Ready() {
@@ -59,12 +59,21 @@ public partial class DialogueManager : Node {
 		DialogueLabel.Text = "";
 		currentText = line.Text;
 
-		// Cargar texturas de personajes si se han definido
-		if (!string.IsNullOrEmpty(line.LeftSpritePath))
+		if (!string.IsNullOrEmpty(line.LeftSpritePath)) {
 			CharacterLeft.Texture = GD.Load<Texture2D>(line.LeftSpritePath);
+			CharacterLeft.Visible = true;
+		}
+		else {
+			CharacterLeft.Visible = false;
+		}
 
-		if (!string.IsNullOrEmpty(line.RightSpritePath))
+		if (!string.IsNullOrEmpty(line.RightSpritePath)) {
 			CharacterRight.Texture = GD.Load<Texture2D>(line.RightSpritePath);
+			CharacterRight.Visible = true;
+		}
+		else {
+			CharacterRight.Visible = false;
+		}
 
 		// Ajustar opacidad según quién habla
 		CharacterLeft.Modulate = line.LeftActive ? Colors.White : new Color(1, 1, 1, 0.5f);
