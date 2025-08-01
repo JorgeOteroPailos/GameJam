@@ -18,7 +18,12 @@ public partial class DialogueManager : Node {
 		new DialogueLine(null, "Fascinated, the Devil demanded a portrait. And she delivered.", false, false, null, null),
 		new DialogueLine(null, "What stared back at him from the canvas was no majestic demon lord, no master of sin. It was him, unmasked, monstrous, and small.", false, false, null, null),
 		new DialogueLine("Devil", "What is the meaning of this?!", true, false, "res://assets/VN/angry_demon.png", null),
+		new DialogueLine("MC", "This is your true self. I am faithful to the strokes of my brush.", false, true, null, "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Devil", "That... That hideous creature cannot be me!", true, false, "res://assets/VN/angry_demon.png", null),
+		new DialogueLine("MC", "My apologies. Yet, please understand that my brush only speaks truth.", false, true, null, "res://assets/VN/sadMC.png"),
 		new DialogueLine(null, "Ashamed and enraged, he banished the painter to the depths of her own personal Hell.", false, false, null, null),
+		new DialogueLine("Devil", "Foolish kid. That will teach her.", true, false, "res://assets/VN/default_demon.png", null),
+		
 		new DialogueLine("MC", "The mother of diosito, how lot of calor is there in hell", false, true, null, "res://assets/VN/defaultMC.png"),
 		new DialogueLine("???", "We don't have AC, you'll have to manage", true, false, "res://assets/VN/default_demon.png", null),
 		new DialogueLine("MC", "What is this guy saying, ma dude", false, true, null, "res://assets/VN/sadMC.png"),
