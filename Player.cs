@@ -6,6 +6,11 @@ public partial class Player : CharacterBody2D
 {
 	public PackedScene BulletScene = GD.Load<PackedScene>("res://disparos.tscn");
 
+	// 0: Azul-Blue
+	// 1: Rojo-Red
+	// 2: Verde-Green
+	
+	public int color=0; 
 	
 	private List<TextureRect> heartList = new List<TextureRect>();
 	private int health = 3;
@@ -34,6 +39,12 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.S)&&this.GlobalPosition.Y<640) velocity.Y += 1;
 		if (Input.IsKeyPressed(Key.A)&&this.GlobalPosition.X>0) velocity.X -= 1;
 		if (Input.IsKeyPressed(Key.D)&&this.GlobalPosition.X<1140) velocity.X += 1;
+		
+		//Para debugg:
+		if(Input.IsActionJustPressed("espacio")) {
+			if(color<2) color++;
+			else color=0;
+		}
 
 		Velocity = velocity.Normalized() * Speed;
 		MoveAndSlide();
@@ -55,6 +66,8 @@ public partial class Player : CharacterBody2D
 		Bullet bullet = (Bullet)BulletScene.Instantiate();
 		bullet.Position = GlobalPosition;
 		bullet.Velocity = direction;
+		bullet.color=this.color;
+		bullet.player=this;
 		
 		GD.Print(bullet.Position);
 		

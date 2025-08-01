@@ -3,6 +3,10 @@ using System;
 
 public partial class Bullet : Area2D
 {
+	private Texture2D nuevaTextura;
+	public int color;
+	
+	public Player player;
 	public Vector2 Velocity = Vector2.Zero;
 	public float Speed = 600f;
 	public float maxDistance=400;
@@ -11,6 +15,27 @@ public partial class Bullet : Area2D
 
 	public override void _Ready()
 	{
+		
+		switch(color){
+			case 0:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota.png");
+				break;
+			case 1:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_red.png");
+				break;
+			default:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_green.png");
+				break;
+		}
+		
+		// Cargar la nueva textura desde la carpeta assets
+
+		// Obtener el nodo Sprite2D (ajusta el nombre si es diferente)
+		Sprite2D sprite = GetNode<Sprite2D>("Sprite2D");
+
+		// Cambiar la textura
+		sprite.Texture = nuevaTextura;
+		
 		originalPosition=this.Position;
 		GD.Print("Bullet creada en: " + Position);
 		GD.Print("Velocidad: " + Velocity);
