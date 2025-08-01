@@ -4,6 +4,9 @@ using System;
 public partial class Circulo : RigidBody2D
 {
 	private Texture2D nuevaTextura;
+	
+	private const float RETROCESO_BALA=10;
+	private const float RETROCESO_CHOQUE=100;
 
 	private Vector2 originalPos;
 	public int color=4;
@@ -44,7 +47,7 @@ public partial class Circulo : RigidBody2D
 		if (bullet is Bullet bullet1)
 		{
 			if(bullet1.color!=this.color){
-			Vector2 retroceso = bullet1.Velocity.Normalized() * 10;
+			Vector2 retroceso = bullet1.Velocity.Normalized() * RETROCESO_BALA;
 
 			// Mueve TODO el nodo, no solo el sprite
 			Tween tween = GetTree().CreateTween();
@@ -63,6 +66,11 @@ public partial class Circulo : RigidBody2D
 		if (body is Player jugador){
 			GD.Print("Jugador tocado por enemigo");
 			jugador.takeDamage();
+			
+			Vector2 retroceso = (GlobalPosition - jugador.GlobalPosition).Normalized() * RETROCESO_CHOQUE;
+
+			Tween tween = GetTree().CreateTween();
+			tween.TweenProperty(this, "global_position", GlobalPosition + retroceso, 0.1f);
 		}
 	}
 	
