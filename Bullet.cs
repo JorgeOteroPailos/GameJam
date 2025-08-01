@@ -18,13 +18,22 @@ public partial class Bullet : Area2D
 		
 		switch(color){
 			case 0:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota.png");
-				break;
-			case 1:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_red.png");
 				break;
-			default:
+			case 1:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_orange.png");
+				break;
+			case 2:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_yellow.png");
+				break;
+			case 3:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_green.png");
+				break;					
+			case 4:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_blue.png");
+				break;
+			default:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_purple.png");
 				break;
 		}
 		

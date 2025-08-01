@@ -6,19 +6,25 @@ public partial class Circulo : RigidBody2D
 	private Texture2D nuevaTextura;
 
 	private Vector2 originalPos;
-	public int color;
+	public int color=4;
 
 	public override void _Ready()
 	{
 		switch(color){
 			case 0:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo.png");
-				break;
-			case 1:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_red.png");
 				break;
-			default:
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_green.png");
+				break;					
+			case 4:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_blue.png");
+				break;
+			default:
 				break;
 		}
 
@@ -44,7 +50,7 @@ public partial class Circulo : RigidBody2D
 			}else{
 				QueueFree();
 				
-				if(player.color<2) player.color++;
+				if(player.color<5) player.color++;
 				else player.color=0;
 			
 			}

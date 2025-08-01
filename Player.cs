@@ -6,11 +6,15 @@ public partial class Player : CharacterBody2D
 {
 	public PackedScene BulletScene = GD.Load<PackedScene>("res://disparos.tscn");
 
-	// 0: Azul-Blue
-	// 1: Rojo-Red
-	// 2: Verde-Green
+	// 0: Rojo-Red
+	// 1: Naranja-Orange
+	// 2: Amarillo-Yellow
+	// 3: Verde-Green
+	// 4: Azul-Blue
+	// 5: Morado-Purple
 	
 	public int color=0; 
+	private Texture2D texturaRueda;
 	
 	private List<TextureRect> heartList = new List<TextureRect>();
 	private int health = 3;
@@ -29,6 +33,15 @@ public partial class Player : CharacterBody2D
 		}
 
 		GD.Print($"Total corazones: {heartList.Count}");
+		
+		// Obtener referencia al Sprite2D o Control que quieres posicionar
+		var rueda = GetNode<Node2D>("rueda/Rueda");
+
+		// Obtener el tamaño del viewport
+		Vector2 viewportSize = GetViewportRect().Size;
+
+		// Colocar en la esquina inferior derecha, con un margen de 20px
+		rueda.GlobalPosition = new Vector2(viewportSize.X - 100, viewportSize.Y - 100);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -42,9 +55,38 @@ public partial class Player : CharacterBody2D
 		
 		//Para debugg:
 		if(Input.IsActionJustPressed("espacio")) {
-			if(color<2) color++;
-			else color=0;
+			if(this.color<5){
+				this.color++;
+			}
+			else this.color=0;
 		}
+		
+		switch(color){
+			case 0:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_red.png");
+				break;
+			case 1:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_orange.png");
+				break;
+			case 2:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_yellow.png");
+				break;
+			case 3:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_green.png");
+				break;					
+			case 4:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_blue.png");
+				break;
+			default:
+				texturaRueda = GD.Load<Texture2D>("res://assets/rueda_purple.png");
+				break;
+		}
+		
+		// Obtener el nodo Sprite2D 
+		Sprite2D sprite = GetNode<Sprite2D>("rueda/Rueda");
+
+		// Cambiar la textura
+		sprite.Texture = texturaRueda;
 
 		Velocity = velocity.Normalized() * Speed;
 		MoveAndSlide();
@@ -54,8 +96,7 @@ public partial class Player : CharacterBody2D
 			Shoot();
 	}
 
-	private void Shoot()
-	{
+	private void Shoot(){
 		
 		GD.Print("hola");
 		// Obtener posición del mouse en el mundo
@@ -75,5 +116,18 @@ public partial class Player : CharacterBody2D
 		// Añadir al árbol
 		GetTree().CurrentScene.AddChild(bullet);
 
+	}
+	
+	public void takeDamage(){
+		if(health>0){
+			health--;
+		}
+		updateLife();
+	}
+	
+	private void updateLife(){
+		for(int i=0;i<heartList.Count;i++){
+			heartList[i].Visible=i<health;
+		}
 	}
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh1fe0s04fixa"
-path="res://.godot/imported/circulo.png-55b80a707ba32b67eb6f143b1d28039d.ctex"
+uid="uid://yd0x26ubjkn3"
+path="res://.godot/imported/rueda_green.png-d356e014144c2391e07943299b5ea351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/circulo.png"
-dest_files=["res://.godot/imported/circulo.png-55b80a707ba32b67eb6f143b1d28039d.ctex"]
+source_file="res://assets/rueda_green.png"
+dest_files=["res://.godot/imported/rueda_green.png-d356e014144c2391e07943299b5ea351.ctex"]
 
 [params]
 

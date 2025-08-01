@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c60o3w37ue45k"]
+[gd_scene load_steps=6 format=3 uid="uid://c60o3w37ue45k"]
 
 [ext_resource type="Script" uid="uid://cj6hpxkxaaol6" path="res://Player.cs" id="1_yppqc"]
 [ext_resource type="Texture2D" uid="uid://bs420qe1ap60k" path="res://assets/New Piskel.png" id="2_gj0cs"]
 [ext_resource type="Texture2D" uid="uid://dy8tuswyi7csx" path="res://assets/corazon.png" id="3_ck3sb"]
+[ext_resource type="Texture2D" uid="uid://bfydr2mqt7avd" path="res://assets/rueda_red.png" id="4_gj0cs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yppqc"]
 size = Vector2(22.4845, 45.5322)
@@ -40,3 +41,10 @@ stretch_mode = 2
 layout_mode = 2
 texture = ExtResource("3_ck3sb")
 stretch_mode = 2
+
+[node name="rueda" type="CanvasLayer" parent="."]
+
+[node name="Rueda" type="Sprite2D" parent="rueda"]
+position = Vector2(-31, 56)
+scale = Vector2(3, 3)
+texture = ExtResource("4_gj0cs")
