@@ -6,7 +6,7 @@ public partial class Musica : AudioStreamPlayer2D
 	public override void _Ready()
 {
 	// Cargar el recurso de audio
-	AudioStream stream = GD.Load<AudioStream>("res://music/piano.ogg");
+	AudioStream stream = GD.Load<AudioStream>("res://music/Unholy_Knight.mp3");
 
 	if (stream == null)
 	{

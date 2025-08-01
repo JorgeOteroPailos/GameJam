@@ -19,10 +19,9 @@ public partial class Pausa : Node2D{
 	
 		if(Input.IsActionJustPressed("Escape")){
 			if (pauseMenu.Visible){
-				musica.VolumeDb=0;
 				pauseMenu.HideMenu();
 			}else{
-				musica.VolumeDb=-6;
+				musica.VolumeDb-=6;
 				pauseMenu.ShowMenu();
 			}
 		}
