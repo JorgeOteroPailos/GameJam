@@ -121,9 +121,9 @@ public partial class PauseMenu : CanvasLayer
 		musica.VolumeDb=-80;
 	}
 	private void OnAjustesPressed(){
-		GetTree().Quit();
+		
 	}
 	private void OnLogrosPressed(){
-		GetTree().Quit();
+		
 	}
 }
