@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c87ii7oaqqdmx"]
+[gd_scene load_steps=17 format=3 uid="uid://c87ii7oaqqdmx"]
 
 [ext_resource type="Texture2D" uid="uid://d7q06xhm0evs" path="res://assets/Fondo_Noche_Estrellada.png" id="1_aou4a"]
 [ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dlq0r6bu20ihq" path="res://assets/Options_Button.png" id="8_0oi55"]
 [ext_resource type="Texture2D" uid="uid://cv273f2aq8210" path="res://assets/Menu_Button.png" id="9_57gmc"]
 [ext_resource type="Texture2D" uid="uid://5tsacpaxgdxh" path="res://assets/Exit_Button.png" id="10_0crsg"]
+[ext_resource type="Texture2D" uid="uid://byf35wk4dh8f" path="res://assets/High_Volume_Button.png" id="11_qobow"]
+[ext_resource type="Texture2D" uid="uid://cly4ircj4jfo4" path="res://assets/Medium_Volume_Button.png" id="12_744hw"]
+[ext_resource type="Texture2D" uid="uid://bmqa5x76tu1ng" path="res://assets/Low_Volume_Button.png" id="13_8wx08"]
+[ext_resource type="Texture2D" uid="uid://cyprggwfwmouw" path="res://assets/Mute_Button.png" id="14_j2eq6"]
+[ext_resource type="Texture2D" uid="uid://csiapxdaad5wo" path="res://assets/Options_2_Button.png" id="15_0hui5"]
+[ext_resource type="Texture2D" uid="uid://fmheomor8un0" path="res://assets/Achivements_Button.png" id="16_sxlx8"]
 
 [node name="mundo" type="Node2D"]
 
@@ -72,3 +78,41 @@ icon = ExtResource("9_57gmc")
 [node name="Salir" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 icon = ExtResource("10_0crsg")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu"]
+offset_left = 644.0
+offset_top = 152.0
+offset_right = 811.0
+offset_bottom = 418.0
+
+[node name="muchoSonido" type="Button" parent="PauseMenu/VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("11_qobow")
+flat = true
+icon_alignment = 1
+
+[node name="sonidoParcial" type="Button" parent="PauseMenu/VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("12_744hw")
+
+[node name="pocoSonido" type="Button" parent="PauseMenu/VBoxContainer2"]
+layout_mode = 2
+icon = ExtResource("13_8wx08")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PauseMenu"]
+offset_left = 835.0
+offset_top = 150.0
+offset_right = 1002.0
+offset_bottom = 524.0
+
+[node name="muted" type="Button" parent="PauseMenu/VBoxContainer3"]
+layout_mode = 2
+icon = ExtResource("14_j2eq6")
+
+[node name="ajustes" type="Button" parent="PauseMenu/VBoxContainer3"]
+layout_mode = 2
+icon = ExtResource("15_0hui5")
+
+[node name="logros" type="Button" parent="PauseMenu/VBoxContainer3"]
+layout_mode = 2
+icon = ExtResource("16_sxlx8")

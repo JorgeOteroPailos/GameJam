@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtvvpjxan4t1s"]
 
 [ext_resource type="Script" uid="uid://dhpxy7cjwcc84" path="res://Circulo.cs" id="1_m3p6c"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gc35q"]
-load_path = "res://.godot/imported/circulo.png-55b80a707ba32b67eb6f143b1d28039d.ctex"
+[ext_resource type="Texture2D" uid="uid://b6h4opv6p0nr7" path="res://assets/circulo_blue.png" id="2_m3p6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gc35q"]
 radius = 6.16556
@@ -16,7 +14,7 @@ script = ExtResource("1_m3p6c")
 
 [node name="Circulo" type="Sprite2D" parent="."]
 position = Vector2(1, -1)
-texture = SubResource("CompressedTexture2D_gc35q")
+texture = ExtResource("2_m3p6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)

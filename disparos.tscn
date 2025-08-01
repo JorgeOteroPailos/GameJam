@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjsdnfl1cykjb"]
 
-[ext_resource type="Texture2D" uid="uid://b6bnp6xisdr4e" path="res://assets/gota.png" id="1_fhaf2"]
 [ext_resource type="Script" uid="uid://3iwwmui7hbfl" path="res://Bullet.cs" id="1_pa5s1"]
+[ext_resource type="Texture2D" uid="uid://ce1qy7qd46alk" path="res://assets/gota_blue.png" id="2_pa5s1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pa5s1"]
 
@@ -10,7 +10,7 @@ script = ExtResource("1_pa5s1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -7)
-texture = ExtResource("1_fhaf2")
+texture = ExtResource("2_pa5s1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

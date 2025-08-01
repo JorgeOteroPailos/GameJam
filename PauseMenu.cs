@@ -51,13 +51,13 @@ public partial class PauseMenu : CanvasLayer
 	
 	private void OnOptionsPressed(){
 		if(flagOptions){
-			contenedor.Position=position;
-			flagOptions=true;
+			contenedor.GlobalPosition=position;
+			flagOptions=false;
 		}else{
-			GD.Print("Se pulsó options");
 			var pos = contenedor.GlobalPosition;
-			pos.X = position.X - 100;
+			pos.X = position.X - 200;
 			contenedor.GlobalPosition = pos;
+			flagOptions=true;
 		}
 	}
 	
