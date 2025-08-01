@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c87ii7oaqqdmx"]
+[gd_scene load_steps=19 format=3 uid="uid://c87ii7oaqqdmx"]
 
 [ext_resource type="Texture2D" uid="uid://d7q06xhm0evs" path="res://assets/Fondo_Noche_Estrellada.png" id="1_aou4a"]
 [ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
@@ -16,6 +16,25 @@
 [ext_resource type="Texture2D" uid="uid://cyprggwfwmouw" path="res://assets/Mute_Button.png" id="14_j2eq6"]
 [ext_resource type="Texture2D" uid="uid://csiapxdaad5wo" path="res://assets/Options_2_Button.png" id="15_0hui5"]
 [ext_resource type="Texture2D" uid="uid://fmheomor8un0" path="res://assets/Achivements_Button.png" id="16_sxlx8"]
+[ext_resource type="AudioStream" uid="uid://b4ug8hb1d26vt" path="res://music/piano.wav" id="17_744hw"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_744hw"]
+script/source = "using Godot;
+using System;
+
+public partial class Musica : AudioStreamPlayer2D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
 
 [node name="mundo" type="Node2D"]
 
@@ -133,3 +152,8 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 icon = ExtResource("16_sxlx8")
 flat = true
+
+[node name="Musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_744hw")
+autoplay = true
+script = SubResource("CSharpScript_744hw")
