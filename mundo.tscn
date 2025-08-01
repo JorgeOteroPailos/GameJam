@@ -64,55 +64,72 @@ alignment = 1
 
 [node name="Continuar" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("7_pij3u")
 icon_alignment = 1
 
 [node name="Options" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("8_0oi55")
 
 [node name="Menu" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("9_57gmc")
 
 [node name="Salir" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("10_0crsg")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenu"]
-offset_left = 644.0
-offset_top = 152.0
-offset_right = 811.0
-offset_bottom = 418.0
+offset_left = 603.0
+offset_top = 186.0
+offset_right = 770.0
+offset_bottom = 452.0
+scale = Vector2(1.00973, 0.993787)
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="muchoSonido" type="Button" parent="PauseMenu/VBoxContainer2"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("11_qobow")
 flat = true
-icon_alignment = 1
 
 [node name="sonidoParcial" type="Button" parent="PauseMenu/VBoxContainer2"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("12_744hw")
+flat = true
 
 [node name="pocoSonido" type="Button" parent="PauseMenu/VBoxContainer2"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("13_8wx08")
+flat = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="PauseMenu"]
-offset_left = 835.0
-offset_top = 150.0
-offset_right = 1002.0
-offset_bottom = 524.0
+offset_left = 668.0
+offset_top = 186.0
+offset_right = 835.0
+offset_bottom = 560.0
 
 [node name="muted" type="Button" parent="PauseMenu/VBoxContainer3"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("14_j2eq6")
+flat = true
 
 [node name="ajustes" type="Button" parent="PauseMenu/VBoxContainer3"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("15_0hui5")
+flat = true
 
 [node name="logros" type="Button" parent="PauseMenu/VBoxContainer3"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("16_sxlx8")
+flat = true

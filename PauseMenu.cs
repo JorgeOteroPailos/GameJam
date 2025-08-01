@@ -12,9 +12,17 @@ public partial class PauseMenu : CanvasLayer
 	
 	private Vector2 position;
 	private VBoxContainer contenedor;
+	private VBoxContainer contenedor2;
+	private VBoxContainer contenedor3;
 
 	public override void _Ready(){
 		contenedor=GetNode<VBoxContainer>("VBoxContainer");
+		contenedor2=GetNode<VBoxContainer>("VBoxContainer2");
+		contenedor3=GetNode<VBoxContainer>("VBoxContainer3");
+		
+		contenedor2.Visible=false;
+		contenedor3.Visible=false;
+		
 		position=contenedor.Position;
 		
 		continuarButton = GetNode<Button>("VBoxContainer/Continuar");
@@ -52,11 +60,18 @@ public partial class PauseMenu : CanvasLayer
 	private void OnOptionsPressed(){
 		if(flagOptions){
 			contenedor.GlobalPosition=position;
+			contenedor2.Visible=false;
+			contenedor3.Visible=false;
+			
 			flagOptions=false;
 		}else{
 			var pos = contenedor.GlobalPosition;
 			pos.X = position.X - 200;
 			contenedor.GlobalPosition = pos;
+			
+			contenedor2.Visible=true;
+			contenedor3.Visible=true;
+			
 			flagOptions=true;
 		}
 	}
