@@ -15,7 +15,12 @@ public partial class Player : CharacterBody2D
 	
 	public int color=0; 
 	private Texture2D texturaRueda;
-	private AnimatedSprite2D personajeAnimado; 
+	private AnimatedSprite2D personajeAnimado;
+	 
+	private bool flagInvulnerabilidad=false;
+	private Timer _timer;
+	
+	private Timer _blinkTimer;
 	
 	private List<AnimatedSprite2D> heartList = new List<AnimatedSprite2D>();
 	private int health = 3;
@@ -46,6 +51,19 @@ public partial class Player : CharacterBody2D
 
 		// Colocar en la esquina inferior derecha, con un margen de 20px
 		rueda.GlobalPosition = new Vector2(viewportSize.X - 100, viewportSize.Y - 100);
+		
+		_timer = new Timer();
+		_timer.WaitTime = 1.0f;
+		_timer.OneShot = true;
+		_timer.Timeout += invulnerabilidad;
+		AddChild(_timer);
+	
+		_blinkTimer = new Timer();
+		_blinkTimer.WaitTime = 0.1f; // velocidad del parpadeo (cada 0.1 segundos)
+		_blinkTimer.OneShot = false;
+		_blinkTimer.Timeout += OnBlinkTimeout;
+		AddChild(_blinkTimer);
+	
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -116,8 +134,6 @@ public partial class Player : CharacterBody2D
 			if (personajeAnimado.Animation != anim) // solo cambiar si es distinta
 				personajeAnimado.Play(anim);
 		}
-		//Abajo+izquierda
-		//Abajo+derecha
 		
 		
 		if(!Input.IsAnythingPressed()){
@@ -189,13 +205,20 @@ public partial class Player : CharacterBody2D
 	}
 	
 	public void takeDamage(){
-		if(health>0){
-			health--;
-		}
-		updateLife();
-		
-		if(health<=0){
-			GetTree().Quit();
+		if (!flagInvulnerabilidad){
+			if (health > 0)
+				health--;
+
+			updateLife();
+
+			if (health <= 0)
+				GetTree().Quit();
+
+			flagInvulnerabilidad = true;
+
+			// Reutilizamos el mismo timer
+			_timer.Start();
+			_blinkTimer.Start();
 		}
 	}
 	
@@ -207,6 +230,17 @@ public partial class Player : CharacterBody2D
 				heartList[i].Play("herir");
 			}
    		}
+	}
+	
+	private void invulnerabilidad(){
+		flagInvulnerabilidad=false;
+		_blinkTimer.Stop();
+		personajeAnimado.Visible = true;
+	}
+	
+	private void OnBlinkTimeout(){
+		if (personajeAnimado != null)
+			personajeAnimado.Visible = !personajeAnimado.Visible;
 	}
 
 }

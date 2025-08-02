@@ -3,6 +3,7 @@ using System;
 
 public partial class Circulo : RigidBody2D
 {
+
 	private Texture2D nuevaTextura;
 	
 	private const float RETROCESO_BALA=10;
@@ -13,6 +14,7 @@ public partial class Circulo : RigidBody2D
 	public int color=4;
 	
 	public Player player;
+
 
 	public override void _Ready()
 	{
@@ -78,15 +80,19 @@ public partial class Circulo : RigidBody2D
 	}
 	
 	private void OnBodyEntered(Node body){
-		if (body is Player jugador){
-			GD.Print("Jugador tocado por enemigo");
-			jugador.takeDamage();
-			
-			Vector2 retroceso = (GlobalPosition - jugador.GlobalPosition).Normalized() * RETROCESO_CHOQUE;
 
-			Tween tween = GetTree().CreateTween();
-			tween.TweenProperty(this, "global_position", GlobalPosition + retroceso, 0.1f);
-		}
+			if (body is Player jugador){
+				GD.Print("Jugador tocado por enemigo");
+				jugador.takeDamage();
+				
+
+				
+				Vector2 retroceso = (GlobalPosition - jugador.GlobalPosition).Normalized() * RETROCESO_CHOQUE;
+
+				Tween tween = GetTree().CreateTween();
+				tween.TweenProperty(this, "global_position", GlobalPosition + retroceso, 0.1f);
+			}
+		
 	}
 	
 	public override void _PhysicsProcess(double delta){
@@ -98,6 +104,7 @@ public partial class Circulo : RigidBody2D
 		
 		// TODO: Meter la animación de los demonios en base a las coordenadas X e Y de Position 
 	}
+
 	
 	
 	
