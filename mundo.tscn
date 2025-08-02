@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c87ii7oaqqdmx"]
+[gd_scene load_steps=20 format=3 uid="uid://c87ii7oaqqdmx"]
 
 [ext_resource type="Texture2D" uid="uid://d7q06xhm0evs" path="res://assets/Fondo_Noche_Estrellada.png" id="1_aou4a"]
+[ext_resource type="Script" uid="uid://c4f2q54ox6mn3" path="res://Mundo.cs" id="1_j2eq6"]
 [ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://personaje.tscn" id="2_fw4w5"]
 [ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://circulo.tscn" id="3_otwa2"]
 [ext_resource type="Script" uid="uid://ctj347id36qo1" path="res://Pausa.cs" id="4_otwa2"]
@@ -20,6 +21,8 @@
 [ext_resource type="Script" uid="uid://dl4q7q2o67yb6" path="res://Musica.cs" id="18_8wx08"]
 
 [node name="mundo" type="Node2D"]
+script = ExtResource("1_j2eq6")
+CirculoScene = ExtResource("3_otwa2")
 
 [node name="P1050518" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -27,15 +30,6 @@ texture = ExtResource("1_aou4a")
 
 [node name="Node2D" parent="." instance=ExtResource("2_fw4w5")]
 position = Vector2(499, 278)
-
-[node name="circulo" parent="." instance=ExtResource("3_otwa2")]
-position = Vector2(146, 390)
-
-[node name="circulo2" parent="." instance=ExtResource("3_otwa2")]
-position = Vector2(434, 430)
-
-[node name="circulo3" parent="." instance=ExtResource("3_otwa2")]
-position = Vector2(279, 245)
 
 [node name="pausa" type="Node2D" parent="."]
 script = ExtResource("4_otwa2")

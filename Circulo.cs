@@ -7,19 +7,29 @@ public partial class Circulo : RigidBody2D
 	
 	private const float RETROCESO_BALA=10;
 	private const float RETROCESO_CHOQUE=100;
+	private const float VELOCIDAD=50;
 
 	private Vector2 originalPos;
 	public int color=4;
+	
+	public Player player;
 
 	public override void _Ready()
 	{
+		if(player == null){
+			GD.PrintErr("No se encontró el nodo Player(clase circulo, ready)!");
+		}
+		
 		switch(color){
 			case 0:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_red.png");
 				break;
 			case 1:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/nespri.jpg");		
 				break;
 			case 2:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/nespri.jpg");		
+				
 				break;
 			case 3:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_green.png");
@@ -28,6 +38,8 @@ public partial class Circulo : RigidBody2D
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_blue.png");
 				break;
 			default:
+				nuevaTextura = GD.Load<Texture2D>("res://assets/nespri.jpg");		
+				
 				break;
 		}
 
@@ -41,6 +53,10 @@ public partial class Circulo : RigidBody2D
 		
 		var area = GetNode<Area2D>("DamageArea");
 		area.BodyEntered += OnBodyEntered;
+	}
+	
+	public void inicializar(int nuevoColor){
+		color=nuevoColor;
 	}
 
 	public void OnHitByBullet(Node bullet, Player player){
@@ -73,5 +89,15 @@ public partial class Circulo : RigidBody2D
 			tween.TweenProperty(this, "global_position", GlobalPosition + retroceso, 0.1f);
 		}
 	}
+	
+	public override void _PhysicsProcess(double delta){
+		// Vector dirección hacia el jugador
+		Vector2 direction = (player.Position - Position).Normalized();
+
+		// Mover hacia el jugador
+		Position += direction * VELOCIDAD * (float)delta;
+	}
+	
+	
 	
 }
