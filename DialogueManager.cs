@@ -68,6 +68,7 @@ public partial class DialogueManager : Node {
 	private async void ShowNextDialogue() {
 		if (currentIndex >= dialogueLines.Count) {
 			GD.Print("Fin del diálogo.");
+			GetTree().ChangeSceneToFile("res://mundo.tscn");
 			return;
 		}
 
