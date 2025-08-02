@@ -17,7 +17,7 @@ public partial class Player : CharacterBody2D
 	private Texture2D texturaRueda;
 	private AnimatedSprite2D personajeAnimado; 
 	
-	private List<TextureRect> heartList = new List<TextureRect>();
+	private List<AnimatedSprite2D> heartList = new List<AnimatedSprite2D>();
 	private int health = 3;
 	public float Speed = 200f;
 
@@ -29,9 +29,10 @@ public partial class Player : CharacterBody2D
 
 		foreach (Node child in heartsParent.GetChildren())
 		{
-			if (child is TextureRect heart)
+			if (child is AnimatedSprite2D heart)
 			{
 				heartList.Add(heart);
+				heart.Play("mover");
 			}
 		}
 
@@ -199,8 +200,13 @@ public partial class Player : CharacterBody2D
 	}
 	
 	private void updateLife(){
-		for(int i=0;i<heartList.Count;i++){
-			heartList[i].Visible=i<health;
-		}
+		for (int i = 0; i < heartList.Count; i++){
+			bool herir = i >= health;
+
+			if (herir && heartList[i].Animation != "herir"){
+				heartList[i].Play("herir");
+			}
+   		}
 	}
+
 }
