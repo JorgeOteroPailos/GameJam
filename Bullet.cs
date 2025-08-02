@@ -5,6 +5,9 @@ public partial class Bullet : Area2D
 {
 	private Texture2D nuevaTextura;
 	public int color=0;
+	public String default_="";
+	public String hit="";
+	private AnimatedSprite2D sprite;
 	
 	public Player player;
 	public Vector2 Velocity = Vector2.Zero;
@@ -13,35 +16,46 @@ public partial class Bullet : Area2D
 	bool flag=false;
 	private Vector2 originalPosition;
 
-	public override void _Ready()
-	{
-		
+	public override void _Ready(){
+		// 0: Rojo-Red
+		// 1: Naranja-Orange
+		// 2: Amarillo-Yellow
+		// 3: Verde-Green
+		// 4: Azul-Blue
+		// 5: Morado-Purple
+	
 		switch(color){
 			case 0:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_red.png");
+				default_="default_red";
+				hit="hit_red";
 				break;
 			case 1:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_orange.png");
+				default_="default_orange";
+				hit="hit_orange";
 				break;
 			case 2:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_yellow.png");
+				default_="default_yellow";
+				hit="hit_yellow";
 				break;
 			case 3:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_green.png");
+				default_="default_green";
+				hit="hit_green";
 				break;					
 			case 4:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_blue.png");
+				default_="default_blue";
+				hit="hit_blue";
 				break;
 			default:
-				nuevaTextura = GD.Load<Texture2D>("res://assets/gota_purple.png");
+				default_="default_purple";
+				hit="hit_purple";
 				break;
 		}
 		
 		// Obtener el nodo Sprite2D 
-		Sprite2D sprite = GetNode<Sprite2D>("Sprite2D");
+		sprite = GetNode<AnimatedSprite2D>("Sprite2D");
 
 		// Cambiar la textura
-		sprite.Texture = nuevaTextura;
+		//sprite.Texture = nuevaTextura;
 		
 		originalPosition=this.Position;
 		GD.Print("Bullet creada en: " + Position);
@@ -51,26 +65,29 @@ public partial class Bullet : Area2D
 	}
 
 
-	public override void _PhysicsProcess(double delta)
-	{
+	public override void _PhysicsProcess(double delta){
 		Position += Velocity * Speed * (float)delta;
+		sprite.Rotation = MathF.Atan2(-Velocity.Y, -Velocity.X);
 
-		// Destruir si se sale de pantalla (opcional)
-		if (!GetViewportRect().HasPoint(GlobalPosition)||this.Position.DistanceTo(this.originalPosition)>maxDistance)
+		if (sprite.Animation != hit) // solo reproducir default si no está en hit
+			sprite.Play(default_);
+
+		if (!GetViewportRect().HasPoint(GlobalPosition) ||
+			Position.DistanceTo(originalPosition) > maxDistance)
 			QueueFree();
 	}
 	
-	private void OnBodyEntered(Node body)
-	{
-		if (body.HasMethod("OnHitByBullet"))
-		{
-			body.Call("OnHitByBullet", this, this.player); // Puedes pasar la bala como referencia
+	private void OnBodyEntered(Node body){
+	
+		if (body.HasMethod("OnHitByBullet")){
+			sprite.Play(hit);
+			body.Call("OnHitByBullet", this, this.player);
 		}
 
-		if(flag){
-			QueueFree(); // Elimina la bala		
+		if (flag){
+			sprite.AnimationFinished += () => QueueFree(); // Espera a que acabe
 		}
-		flag=true;
+		flag = true;
 	}
 	
 }

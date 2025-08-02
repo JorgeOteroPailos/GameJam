@@ -29,7 +29,6 @@ public partial class Circulo : RigidBody2D
 				break;
 			case 2:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/nespri.jpg");		
-				
 				break;
 			case 3:
 				nuevaTextura = GD.Load<Texture2D>("res://assets/circulo_green.png");
@@ -96,6 +95,8 @@ public partial class Circulo : RigidBody2D
 
 		// Mover hacia el jugador
 		Position += direction * VELOCIDAD * (float)delta;
+		
+		// TODO: Meter la animación de los demonios en base a las coordenadas X e Y de Position 
 	}
 	
 	
