@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
 	
 	public int color=0; 
 	private Texture2D texturaRueda;
+	private AnimatedSprite2D personajeAnimado; 
 	
 	private List<TextureRect> heartList = new List<TextureRect>();
 	private int health = 3;
@@ -22,6 +23,8 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		personajeAnimado=GetNode<AnimatedSprite2D>("Sprite2D");
+		
 		Node heartsParent = GetNode("barra_vida/HBoxContainer");
 
 		foreach (Node child in heartsParent.GetChildren())
@@ -48,11 +51,77 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Vector2.Zero;
 
-		if (Input.IsKeyPressed(Key.W)&&this.GlobalPosition.Y>0) velocity.Y -= 1;
-		if (Input.IsKeyPressed(Key.S)&&this.GlobalPosition.Y<640) velocity.Y += 1;
-		if (Input.IsKeyPressed(Key.A)&&this.GlobalPosition.X>0) velocity.X -= 1;
-		if (Input.IsKeyPressed(Key.D)&&this.GlobalPosition.X<1140) velocity.X += 1;
+		//Arriba
+		string anim = "";
+		bool flipH = false;
+
+		if (Input.IsKeyPressed(Key.W) && Input.IsKeyPressed(Key.A))
+		{
+			anim = "run_arriba_diagonal";
+			flipH = false;
+			velocity.Y-=1;
+			velocity.X-=1;
+		}
+		else if (Input.IsKeyPressed(Key.W) && Input.IsKeyPressed(Key.D))
+		{
+			anim = "run_arriba_diagonal";
+			flipH = true;
+			velocity.Y-=1;
+			velocity.X+=1;
+		}else if (Input.IsKeyPressed(Key.S) && Input.IsKeyPressed(Key.A))
+		{
+			anim = "run_abajo_diagonal";
+			flipH = false;
+			velocity.Y+=1;
+			velocity.X-=1;
+		}else if (Input.IsKeyPressed(Key.S) && Input.IsKeyPressed(Key.D))
+		{
+			anim = "run_abajo_diagonal";
+			flipH = true;
+			velocity.Y+=1;
+			velocity.X+=1;
+		}
+		else if (Input.IsKeyPressed(Key.W))
+		{
+			anim = "run_arriba";
+			velocity.Y -= 1;
+		}
+		else if (Input.IsKeyPressed(Key.S))
+		{
+			anim = "run_abajo";
+			velocity.Y += 1;
+		}
+		else if (Input.IsKeyPressed(Key.A))
+		{
+			anim = "run_lado";
+			flipH = false;
+			velocity.X -= 1;
+		}
+		else if (Input.IsKeyPressed(Key.D))
+		{
+			anim = "run_lado";
+			flipH = true;
+			velocity.X += 1;
+
+		}
+		else
+		{
+			anim = "idle"; // animación de estar quieto
+		}
+
+		if (!string.IsNullOrEmpty(anim))
+		{
+			personajeAnimado.FlipH = flipH;
+			if (personajeAnimado.Animation != anim) // solo cambiar si es distinta
+				personajeAnimado.Play(anim);
+		}
+		//Abajo+izquierda
+		//Abajo+derecha
 		
+		
+		if(!Input.IsAnythingPressed()){
+			personajeAnimado.Play("idle");
+		}
 		//Para debugg:
 		if(Input.IsActionJustPressed("espacio")) {
 			if(this.color<5){
