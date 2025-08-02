@@ -14,15 +14,27 @@ public partial class DialogueManager : Node {
 
 	private List<DialogueLine> dialogueLines = new List<DialogueLine> {
 		new DialogueLine(null, "They say the Devil bows to no one. He rules with pride and defiance, and he needs neither permission nor praise.", false, false, null, null),
-		new DialogueLine(null, "Eventually, the Devil’s boredom and curiosity drew him to a mortal unlike any other. She came with no crown, no army, just a simple brush.\nA painter whose strokes flayed deception, leaving only the raw, bleeding truth beneath.", false, false, null, null),
+		new DialogueLine(null, "For ages, nothing stirred him: no prayer, no curse, no soul worth a second glance.", false, false, null, null),
+		new DialogueLine(null, "But eventually, his boredom and curiosity drew him to a mortal unlike any other. She came with no crown, no army, just a simple brush.\nA painter whose strokes flayed deception, leaving only the raw, bleeding truth beneath.", false, false, null, null),
 		new DialogueLine(null, "Fascinated, the Devil demanded a portrait. And she delivered.", false, false, null, null),
 		new DialogueLine(null, "What stared back at him from the canvas was no majestic demon lord, no master of sin. It was him, unmasked, monstrous, and small.", false, false, null, null),
 		new DialogueLine("Devil", "What is the meaning of this?!", true, false, "res://assets/VN/angry_demon.png", null),
-		new DialogueLine("MC", "This is your true self. I am faithful to the strokes of my brush.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Iris", "This is your true self. I am faithful to the strokes of my brush.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/defaultMC.png"),
 		new DialogueLine("Devil", "That... That hideous creature cannot be me!", true, false, "res://assets/VN/angry_demon.png", "res://assets/VN/defaultMC.png"),
-		new DialogueLine("MC", "My apologies. Yet, please understand that my brush only speaks truth.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/sadMC.png"),
+		new DialogueLine("Iris", "My apologies. Yet, please understand that my brush only speaks truth.", false, true, "res://assets/VN/angry_demon.png", "res://assets/VN/sadMC.png"),
 		new DialogueLine(null, "Ashamed and enraged, he banished the painter to the depths of her own personal Hell.", false, false, "res://assets/VN/angry_demon.png", "res://assets/VN/sadMC.png"),
 		new DialogueLine("Devil", "Foolish kid. That will teach her.", true, false, "res://assets/VN/default_demon.png", null),
+		
+		
+		new DialogueLine("Iris", "Where am I?", false, true, null, "res://assets/VN/sadMC.png"),
+		new DialogueLine(null, "The artist moved around the strange room. There were no windows, just a long, narrow corridor.", false, false, null, "res://assets/VN/sadMC.png"),
+		new DialogueLine(null, "Suddenly, the crackling sound of a small flame catched her attention.", false, false, null, "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Iris", "Who goes there?!", false, true, null, "res://assets/VN/angryMC.png"),
+		new DialogueLine(null, "Before her eyes, from the fire below, appeared some kind of spirit, no bigger than a basket.", false, false, null, "res://assets/VN/defaultMC.png"),
+		new DialogueLine("???", "Just a small flame, ma'am. A fellow condemned soul, just like you.", true, false, "res://assets/VN/surprised_spirit.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Kenneth", "The name is Kenneth.", true, false, "res://assets/VN/default_spirit.png", "res://assets/VN/defaultMC.png"),
+		new DialogueLine("Iris", "Well, Kenneth, you can call me Iris.", false, true, "res://assets/VN/default_spirit.png", "res://assets/VN/happyMC.png"),
+		new DialogueLine("Iris", "Any idea how to get out of here?", false, true, "res://assets/VN/default_spirit.png", "res://assets/VN/motivatedMC.png"),
 		
 		new DialogueLine("MC", "The mother of diosito, how lot of calor is there in hell", false, true, null, "res://assets/VN/defaultMC.png"),
 		new DialogueLine("???", "We don't have AC, you'll have to manage", true, false, "res://assets/VN/default_spirit.png", "res://assets/VN/defaultMC.png"),

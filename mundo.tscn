@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cyprggwfwmouw" path="res://assets/Mute_Button.png" id="14_j2eq6"]
 [ext_resource type="Texture2D" uid="uid://csiapxdaad5wo" path="res://assets/Options_2_Button.png" id="15_0hui5"]
 [ext_resource type="Texture2D" uid="uid://fmheomor8un0" path="res://assets/Achivements_Button.png" id="16_sxlx8"]
-[ext_resource type="AudioStream" uid="uid://fxi4cjrb43dg" path="res://music/Unholy_Knight.mp3" id="17_8wx08"]
+[ext_resource type="AudioStream" uid="uid://mlcxrwrqsxum" path="res://music/Unholy_Knight.mp3" id="17_8wx08"]
 [ext_resource type="Script" uid="uid://dl4q7q2o67yb6" path="res://Musica.cs" id="18_8wx08"]
 
 [node name="mundo" type="Node2D"]
