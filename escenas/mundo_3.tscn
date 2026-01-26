@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://03o3nqqcx7k7"]
+
+[ext_resource type="Script" uid="uid://82rdtvosb7gx" path="res://scripts/Mundo3.cs" id="1_8q8mn"]
+[ext_resource type="Texture2D" uid="uid://bf6e71qphympn" path="res://assets/fondos/surrealismo.png" id="2_0nedo"]
+[ext_resource type="AudioStream" uid="uid://b1m1rwf5w1a42" path="res://music/Slow Burn.mp3" id="3_27jmu"]
+[ext_resource type="Script" uid="uid://dl4q7q2o67yb6" path="res://scripts/Musica.cs" id="4_form0"]
+[ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://escenas/personaje.tscn" id="5_yuspp"]
+[ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://escenas/circulo.tscn" id="6_6b5o3"]
+[ext_resource type="Texture2D" uid="uid://cls075wwknjof" path="res://assets/Puerta.png" id="19_d0f3g"]
+[ext_resource type="Texture2D" uid="uid://ddfywmtnhksu4" path="res://assets/candados/candado_naranja_y_morado.png" id="20_8u36a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe15i"]
+size = Vector2(72, 39)
+
+[node name="mundo3" type="Node2D"]
+script = ExtResource("1_8q8mn")
+
+[node name="fondo" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+texture = ExtResource("2_0nedo")
+
+[node name="musica" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1521, -67)
+stream = ExtResource("3_27jmu")
+autoplay = true
+script = ExtResource("4_form0")
+
+[node name="personaje" parent="." instance=ExtResource("5_yuspp")]
+z_index = 2
+position = Vector2(560, 621)
+
+[node name="Enemigos" type="CanvasLayer" parent="."]
+
+[node name="circulo" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(572, 116)
+
+[node name="circulo2" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(498, 116)
+
+[node name="circulo3" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(428, 140)
+
+[node name="circulo4" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(285, 219)
+
+[node name="circulo5" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(227, 290)
+
+[node name="circulo6" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(141, 416)
+
+[node name="circulo7" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(117, 496)
+
+[node name="circulo8" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(89, 588)
+
+[node name="circulo9" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(648, 125)
+
+[node name="circulo10" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(711, 139)
+
+[node name="circulo11" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(783, 158)
+
+[node name="circulo12" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(901, 273)
+
+[node name="circulo13" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(1013, 457)
+
+[node name="circulo14" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(1036, 525)
+
+[node name="circulo15" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(1051, 598)
+
+[node name="circulo16" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(358, 168)
+
+[node name="circulo17" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(980, 395)
+
+[node name="circulo18" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(944, 336)
+
+[node name="circulo19" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(174, 351)
+
+[node name="circulo20" parent="Enemigos" instance=ExtResource("6_6b5o3")]
+z_index = 1
+position = Vector2(850, 213)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 73)
+
+[node name="Puerta" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1, -24)
+texture = ExtResource("19_d0f3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_qe15i")
+
+[node name="candado" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(574, 51)
+texture = ExtResource("20_8u36a")

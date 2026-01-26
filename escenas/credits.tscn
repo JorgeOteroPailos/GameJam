@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qimj0nsd0lvd"]
+
+[ext_resource type="Script" uid="uid://ce42fqww8vef4" path="res://scripts/Credits.cs" id="1_c1t8d"]
+[ext_resource type="Texture2D" uid="uid://dwd37xb1lgclc" path="res://assets/credits_1.png" id="2_g4wvt"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c1t8d")
+
+[node name="TheBackground" type="TextureRect" parent="."]
+z_index = -1000
+layout_mode = 0
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 1157.0
+offset_bottom = 654.0
+texture = ExtResource("2_g4wvt")
+expand_mode = 3

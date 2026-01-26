@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://t2uwewuvj8s7"]
+
+[ext_resource type="Script" uid="uid://bmast3u1g3c5t" path="res://scripts/HUD_movil.cs" id="1_e3vx7"]
+[ext_resource type="Texture2D" uid="uid://d2swv8t0yqg8h" path="res://assets/joystick/borde.png" id="1_up6ai"]
+[ext_resource type="Texture2D" uid="uid://bnhoih84xl2p2" path="res://assets/joystick/centro.png" id="2_e3vx7"]
+[ext_resource type="Texture2D" uid="uid://5ggh42vivhma" path="res://assets/menus/botones_iconos/pausa.png" id="4_untfa"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_e3vx7")
+
+[node name="Joystick" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Borde" type="TextureRect" parent="Joystick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -42.5
+offset_right = 42.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_up6ai")
+
+[node name="Centro" type="TextureRect" parent="Joystick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e3vx7")
+
+[node name="BotonPausa" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_bottom = 51.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_untfa")

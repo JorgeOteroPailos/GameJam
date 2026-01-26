@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1m1rwf5w1a42"
+path="res://.godot/imported/Slow Burn.mp3-c4d1750eef0079aed3d037f5eccbf600.mp3str"
+
+[deps]
+
+source_file="res://music/Slow Burn.mp3"
+dest_files=["res://.godot/imported/Slow Burn.mp3-c4d1750eef0079aed3d037f5eccbf600.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

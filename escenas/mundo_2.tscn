@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkae7rnoqnvvr"]
+
+[ext_resource type="Script" uid="uid://c5tcikptx2w5y" path="res://scripts/Mundo2.cs" id="1_aj8na"]
+[ext_resource type="Texture2D" uid="uid://da62a2yfqrs04" path="res://assets/fondos/neoplasticismo.png" id="2_78yvl"]
+[ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://escenas/personaje.tscn" id="2_aj8na"]
+[ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://escenas/circulo.tscn" id="3_8qq5d"]
+[ext_resource type="AudioStream" uid="uid://crm7xvxvoncm7" path="res://music/Eighties Action.mp3" id="5_l1rco"]
+[ext_resource type="Script" uid="uid://dl4q7q2o67yb6" path="res://scripts/Musica.cs" id="6_i8qb5"]
+[ext_resource type="Texture2D" uid="uid://cls075wwknjof" path="res://assets/Puerta.png" id="19_i8qb5"]
+[ext_resource type="Texture2D" uid="uid://cih4s8k5ib48" path="res://assets/candados/candado_verde.png" id="20_sbgel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbgel"]
+size = Vector2(72, 39)
+
+[node name="mundo2" type="Node2D"]
+script = ExtResource("1_aj8na")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_78yvl")
+
+[node name="personaje" parent="." instance=ExtResource("2_aj8na")]
+z_index = 2
+position = Vector2(563, 608)
+
+[node name="Enemigos" type="CanvasLayer" parent="."]
+
+[node name="circulo" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(368, 127)
+
+[node name="circulo2" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(312, 170)
+
+[node name="circulo3" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(267, 245)
+
+[node name="circulo4" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(248, 334)
+
+[node name="circulo5" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(248, 408)
+
+[node name="circulo6" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(267, 477)
+
+[node name="circulo7" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(309, 545)
+
+[node name="circulo8" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(370, 609)
+
+[node name="circulo9" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(743, 122)
+
+[node name="circulo10" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(799, 174)
+
+[node name="circulo11" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(842, 242)
+
+[node name="circulo12" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(869, 320)
+
+[node name="circulo13" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(869, 399)
+
+[node name="circulo14" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(850, 470)
+
+[node name="circulo15" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(802, 534)
+
+[node name="circulo16" parent="Enemigos" instance=ExtResource("3_8qq5d")]
+z_index = 2
+position = Vector2(745, 601)
+
+[node name="musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_l1rco")
+autoplay = true
+script = ExtResource("6_i8qb5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 73)
+
+[node name="Puerta" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1, -24)
+texture = ExtResource("19_i8qb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_sbgel")
+
+[node name="candado" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(574, 51)
+texture = ExtResource("20_sbgel")

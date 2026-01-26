@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=3 uid="uid://0wtnvk2lsq2d"]
+
+[ext_resource type="AudioStream" uid="uid://dlinnrdufu77m" path="res://music/Ouroboros.mp3" id="1_jrykt"]
+[ext_resource type="Script" uid="uid://ca3fu1e682dny" path="res://scripts/Mundo4.cs" id="1_we25a"]
+[ext_resource type="Script" uid="uid://dl4q7q2o67yb6" path="res://scripts/Musica.cs" id="2_we25a"]
+[ext_resource type="PackedScene" uid="uid://c60o3w37ue45k" path="res://escenas/personaje.tscn" id="3_h6caf"]
+[ext_resource type="Texture2D" uid="uid://cari0o7dc5ij3" path="res://assets/fondos/cubismo.png" id="8_ewyv6"]
+[ext_resource type="PackedScene" uid="uid://dtvvpjxan4t1s" path="res://escenas/circulo.tscn" id="16_lg3dy"]
+[ext_resource type="Texture2D" uid="uid://cls075wwknjof" path="res://assets/Puerta.png" id="17_d7yc5"]
+[ext_resource type="Texture2D" uid="uid://tuvgadgpi4b0" path="res://assets/candados/candado_blanco.png" id="18_47cx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6y0b"]
+size = Vector2(72, 39)
+
+[node name="mundo4" type="Node2D"]
+script = ExtResource("1_we25a")
+
+[node name="musica" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1521, -67)
+stream = ExtResource("1_jrykt")
+autoplay = true
+script = ExtResource("2_we25a")
+
+[node name="personaje" parent="." instance=ExtResource("3_h6caf")]
+z_index = 2
+position = Vector2(560, 621)
+
+[node name="Enemigos" type="CanvasLayer" parent="."]
+
+[node name="circulo" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(633, 445)
+
+[node name="circulo2" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(496, 446)
+
+[node name="circulo3" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(451, 416)
+
+[node name="circulo4" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(410, 386)
+
+[node name="circulo5" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(360, 356)
+
+[node name="circulo6" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(314, 317)
+
+[node name="circulo7" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(265, 285)
+
+[node name="circulo8" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(216, 269)
+
+[node name="circulo9" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(164, 255)
+
+[node name="circulo10" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(692, 413)
+
+[node name="circulo11" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(744, 386)
+
+[node name="circulo12" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(783, 341)
+
+[node name="circulo13" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(841, 301)
+
+[node name="circulo14" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(888, 271)
+
+[node name="circulo15" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(948, 255)
+
+[node name="circulo16" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(116, 280)
+
+[node name="circulo17" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(999, 284)
+
+[node name="circulo18" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(1044, 331)
+
+[node name="circulo19" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(75, 320)
+
+[node name="circulo20" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(1079, 391)
+
+[node name="circulo21" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(560, 478)
+
+[node name="circulo22" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(44, 385)
+
+[node name="circulo23" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(1106, 458)
+
+[node name="circulo24" parent="Enemigos" instance=ExtResource("16_lg3dy")]
+z_index = 2
+position = Vector2(22, 457)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 73)
+
+[node name="Puerta" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1, -24)
+texture = ExtResource("17_d7yc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_u6y0b")
+
+[node name="candado" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(574, 51)
+texture = ExtResource("18_47cx0")
+
+[node name="fondo" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+texture = ExtResource("8_ewyv6")

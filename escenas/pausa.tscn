@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1u5qf5ybtcm1"]
+
+[ext_resource type="Script" path="res://scripts/Pausa.cs" id="1_ety1p"]
+
+[node name="Pausa" type="CanvasLayer"]
+script = ExtResource("1_ety1p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="boton_continuar" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="boton_opciones" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="boton_salir" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainerOpciones" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainerIdiomas" type="HBoxContainer" parent="PanelContainer/VBoxContainerOpciones"]
+layout_mode = 2
+
+[node name="boton_volver" type="TextureButton" parent="PanelContainer/VBoxContainerOpciones"]
+layout_mode = 2

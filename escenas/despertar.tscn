@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2ko5osp8wyc"]
+
+[ext_resource type="Script" uid="uid://ci06ty4rupijs" path="res://scripts/Despertar.cs" id="1_cdosi"]
+[ext_resource type="Texture2D" uid="uid://3tf3pxyr5hrw" path="res://assets/fondos/noche_estrellada.png" id="2_wwao1"]
+[ext_resource type="Texture2D" uid="uid://bkygheei2k5cb" path="res://assets/prota.png" id="3_rensm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7ak4"]
+atlas = ExtResource("3_rensm")
+region = Rect2(384, 672, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5ifd"]
+atlas = ExtResource("3_rensm")
+region = Rect2(336, 672, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdwsa"]
+atlas = ExtResource("3_rensm")
+region = Rect2(288, 672, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e1in"]
+atlas = ExtResource("3_rensm")
+region = Rect2(480, 480, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2jjk"]
+atlas = ExtResource("3_rensm")
+region = Rect2(432, 480, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xot1q"]
+atlas = ExtResource("3_rensm")
+region = Rect2(384, 576, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13ljn"]
+atlas = ExtResource("3_rensm")
+region = Rect2(240, 672, 48, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waph8"]
+atlas = ExtResource("3_rensm")
+region = Rect2(240, 576, 48, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e17mf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ak4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ak4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ak4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5ifd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdwsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e1in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2jjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e1in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xot1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13ljn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waph8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xot1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e1in")
+}],
+"loop": false,
+"name": &"despertar",
+"speed": 2.0
+}]
+
+[node name="despertar" type="Node2D"]
+script = ExtResource("1_cdosi")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_wwao1")
+
+[node name="personaje" type="AnimatedSprite2D" parent="."]
+position = Vector2(575, 344)
+sprite_frames = SubResource("SpriteFrames_e17mf")
+animation = &"despertar"
