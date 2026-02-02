@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://fmheomor8un0" path="res://assets/Achivements_Button.png" id="11_6b2fa"]
 
 [node name="Node2D" type="Node2D"]
+z_index = 5
 script = ExtResource("1_7e6sy")
 
 [node name="FondoInicio" type="Sprite2D" parent="."]
@@ -17,7 +18,6 @@ position = Vector2(576, 324)
 texture = ExtResource("2_yw1ns")
 
 [node name="paint" type="Button" parent="."]
-z_index = 5
 offset_left = 87.0
 offset_top = 452.0
 offset_right = 435.0
@@ -26,7 +26,6 @@ scale = Vector2(0.920742, 0.882276)
 mouse_default_cursor_shape = 2
 
 [node name="opts" type="Button" parent="."]
-z_index = 5
 offset_left = 428.0
 offset_top = 428.0
 offset_right = 602.0
@@ -34,7 +33,6 @@ offset_bottom = 487.0
 mouse_default_cursor_shape = 2
 
 [node name="exit" type="Button" parent="."]
-z_index = 5
 offset_left = 428.0
 offset_top = 498.0
 offset_right = 602.0

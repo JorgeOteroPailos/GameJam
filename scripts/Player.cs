@@ -312,7 +312,7 @@ public partial class Player : CharacterBody2D
 		bullet.Position = origen;
 		bullet.Velocity = direction;
 		bullet.color=colorDisparo;
-		bullet.player=this;
+		bullet.esDeJefe=false;
 
 		// Añadir al árbol
 		GetTree().CurrentScene.AddChild(bullet);
@@ -383,13 +383,14 @@ public partial class Player : CharacterBody2D
 		asertarColor();
 	}
 
-	/*
-	public void OnHitByBullet(Node bullet, Player player){
-		//notese que player aquí es null, pq la bala la disparó el jefe
+	public void OnHitByBullet(Node bullet){
+
 		if (bullet is Bullet bullet1){
-			//this.takeDamage();
+			if(bullet1.esDeJefe){
+				this.takeDamage();
+			}
 		}
 	}
-	*/
+
 
 }

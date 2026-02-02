@@ -10,14 +10,12 @@ public partial class Bullet : Area2D
 	private AnimatedSprite2D sprite;
 	private CollisionShape2D collisionShape;
 	
-	private Node enemyHit = null;
-	
-	public Player player;
 	public Vector2 Velocity = Vector2.Zero;
 	public float Speed = 800f;
 	public float maxDistance=400;
 	private bool flagImpacte=false;
 	private Vector2 originalPosition;
+	public bool esDeJefe=false;
 
 	public override void _Ready(){
 		// 0: Rojo-Red
@@ -26,10 +24,12 @@ public partial class Bullet : Area2D
 		// 3: Verde-Green
 		// 4: Azul-Blue
 		// 5: Morado-Purple
+		// 6: blanco (q en vdd es multicolor)
+		// 7: negro (lo dispara el boss)
 		
 		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		
-		string[] colores={"red", "orange", "yellow", "green", "blue", "purple", "white"};
+		string[] colores={"red", "orange", "yellow", "green", "blue", "purple", "white", "black"};
 	
 		default_="default_"+colores[color];
 		hit="hit_"+colores[color];
@@ -72,24 +72,8 @@ private void OnBodyEntered(Node body)
 		return; // Ya impactó
 
 	if (body.HasMethod("OnHitByBullet"))
-	{
-		flagImpacte = true;
-
-		// Detener colisiones inmediatamente
-		collisionShape.SetDeferred("disabled", true);
-
-		// Guardar enemigo para llamar su método
-		enemyHit = body;
-
-		// Reproducir animación de impacto
-		sprite.Play(hit);
-		
-		if (enemyHit != null && enemyHit.HasMethod("OnHitByBullet"))
-		{
-			enemyHit.Call("OnHitByBullet", this, player);
-		}
-		
-		
+	{	
+		body.Call("OnHitByBullet", this);
 	}
 }
 
@@ -97,6 +81,18 @@ private void OnBodyEntered(Node body)
 private void _OnAnimationFinished()
 	{
 	QueueFree(); // Destruye la bala al terminar la animación
+}
+
+public void impactar(){
+		flagImpacte = true;
+		
+		GD.Print("Entrando a impactar");
+
+		// Detener colisiones inmediatamente
+		collisionShape.SetDeferred("disabled", true);
+
+		// Reproducir animación de impacto
+		sprite.Play(hit);
 }
 
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bound by Brush"
-run/main_scene="res://escenas/inicio.tscn"
+run/main_scene="res://escenas/mundo_5.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 
 [autoload]

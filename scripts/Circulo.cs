@@ -6,6 +6,8 @@ public partial class Circulo : CharacterBody2D
 	private bool isDying = false;
 	private bool isAppearing = false;
 	
+	public PackedScene BulletScene = GD.Load<PackedScene>("res://escenas/disparos.tscn");
+	
 	[Export] public bool esJefe = false;
 
 	public String colorEscrito=""; 
@@ -23,6 +25,9 @@ public partial class Circulo : CharacterBody2D
 	public Player player;
 
 	AnimatedSprite2D sprite;
+	
+	private float shootCooldown = 5.0f; // tiempo mínimo entre disparos en segundos
+	private Timer shootTimer;
 
 	public override void _Ready()
 	{
@@ -41,14 +46,24 @@ public partial class Circulo : CharacterBody2D
 		if (esJefe){
 			volverJefe();
 		}
+		
+		shootTimer = new Timer();
+		shootTimer.WaitTime = shootCooldown;
+		shootTimer.OneShot = true;
+		AddChild(shootTimer);
 	}
 
-	public void OnHitByBullet(Node bullet, Player player){
+	public void OnHitByBullet(Node bullet){
 		if(isAppearing){
 			return;
 		}
+		
 		if (bullet is Bullet bullet1)
 		{
+			if(bullet1.esDeJefe){
+				return;
+			}
+			bullet1.impactar();
 			if (bullet1.color != this.color){
 				Vector2 retroceso = bullet1.Velocity.Normalized() * RETROCESO_BALA;
 				Tween tween = GetTree().CreateTween();
@@ -68,7 +83,7 @@ public partial class Circulo : CharacterBody2D
 					QueueFree(); // Eliminar el enemigo
 				};
 				
-				if(player!=null){
+				if(!bullet1.esDeJefe){
 					player.cambiarColor(false);
 				}
 			}
@@ -149,6 +164,32 @@ public partial class Circulo : CharacterBody2D
 			if (sprite.Animation != anim)
 				sprite.Play(anim);
 		}
+		
+		if(esJefe && shootTimer.IsStopped()){
+			Shoot();
+		}
+		
+	}
+	
+	private void Shoot(){
+		
+		
+		Vector2 origen=GlobalPosition;
+		Vector2 objetivo=player.Position;
+		
+		Vector2 direction = (objetivo - origen).Normalized();
+
+		// Instanciar bala
+		Bullet bullet = (Bullet)BulletScene.Instantiate();
+		bullet.Position = origen;
+		bullet.Velocity = direction;
+		bullet.color=7; //negro
+		bullet.esDeJefe=true;
+
+		// Añadir al árbol
+		GetTree().CurrentScene.AddChild(bullet);
+		
+		shootTimer.Start();
 	}
 	
 	public void volverJefe(){
