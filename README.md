@@ -25,16 +25,23 @@ As Iris travels through a series of cursed paintings, the story unfolds level by
 - **Made with Godot**
   - Developed using the **Godot Engine**.
 - **Localization**
-  - Available in **English** and **Galician (Galego)**.
+  - Available in **English**, **Galician** and **Spanish**.
   - More languages are planned for future updates.
 
 ---
 
 ## 🕹️ Controls
 
+### PC
+
 - **WASD** — Move
 - **Left Click** — Shoot
 
+### Mobile
+
+- **Joystick** — Move
+- **Touching the screen elsewhere** — Shoot
+ 
 > **Note:** Color switching is **no longer** done with the space bar.  
 > Your color changes **only when you defeat an enemy** (advancing to the next color on the wheel).
 
@@ -67,6 +74,7 @@ The codebase is designed with modularity in mind so that:
 
 - **English**
 - **Galego (Galician)**
+- **Castellano (Spanish)**
 
 We expect to add more languages soon.
 
