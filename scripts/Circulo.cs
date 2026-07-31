@@ -17,6 +17,7 @@ public partial class Circulo : CharacterBody2D
 	private const float RETROCESO_BALA=10;
 	private const float RETROCESO_CHOQUE=100;
 	public float VELOCIDAD=50;
+	public const float VELOCIDAD_DISPAROS=400f;
 
 	private Vector2 originalPos;
 	[Export] public int color=4;
@@ -171,25 +172,36 @@ public partial class Circulo : CharacterBody2D
 		
 	}
 	
-	private void Shoot(){
-		
-		
-		Vector2 origen=GlobalPosition;
-		Vector2 objetivo=player.Position;
-		
-		Vector2 direction = (objetivo - origen).Normalized();
-
-		// Instanciar bala
-		Bullet bullet = (Bullet)BulletScene.Instantiate();
-		bullet.Position = origen;
-		bullet.Velocity = direction;
-		bullet.color=7; //negro
-		bullet.esDeJefe=true;
-
-		// Añadir al árbol
-		GetTree().CurrentScene.AddChild(bullet);
-		
+	private async void Shoot()
+	{
+		// 1. INICIAR EL TIMER DE INMEDIATO para bloquear llamadas en los siguientes frames
 		shootTimer.Start();
+
+		Vector2 origen = GlobalPosition;
+		Vector2 objetivo = player.Position;
+		Vector2 direccionBase = (objetivo - origen).Normalized();
+
+		float[] angulosOffset = new float[] { -0.26f, 0.0f, 0.26f };
+
+		foreach (float offsetAngle in angulosOffset)
+		{
+			if (isDying || !IsInstanceValid(this)) 
+				return;
+
+			Vector2 direccionBala = direccionBase.Rotated(offsetAngle);
+
+			Bullet bullet = (Bullet)BulletScene.Instantiate();
+			bullet.Position = origen;
+			bullet.Velocity = direccionBala;
+			bullet.color = 7; // negro
+			bullet.esDeJefe = true;
+			bullet.Speed=VELOCIDAD_DISPAROS;
+
+			GetTree().CurrentScene.AddChild(bullet);
+
+			// Esperar entre cada bala de la ráfaga
+			await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
+		}
 	}
 	
 	public void volverJefe(){

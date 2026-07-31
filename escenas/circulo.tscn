@@ -1,6 +1,6 @@
 [gd_scene load_steps=188 format=3 uid="uid://dtvvpjxan4t1s"]
 
-[ext_resource type="Script" uid="uid://dhpxy7cjwcc84" path="res://scripts/Circulo.cs" id="1_m3p6c"]
+[ext_resource type="Script" path="res://scripts/Circulo.cs" id="1_m3p6c"]
 [ext_resource type="Texture2D" uid="uid://be38sv68p4io4" path="res://assets/demonio_blue.png" id="2_lvyic"]
 [ext_resource type="Texture2D" uid="uid://dk8tqog48sx0q" path="res://assets/demonio_green.png" id="3_1jubr"]
 [ext_resource type="Texture2D" uid="uid://chhy3jirwtg7c" path="res://assets/demonio_orange.png" id="4_50yo2"]
@@ -1573,11 +1573,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gc35q"]
-radius = 6.16556
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlagk"]
+radius = 15.0
+height = 49.14
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvyic"]
-size = Vector2(33.1644, 26.2939)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6pgn"]
+radius = 15.0
+height = 50.0
 
 [node name="circulo" type="CharacterBody2D" node_paths=PackedStringArray("collisionShape2D")]
 script = ExtResource("1_m3p6c")
@@ -1589,14 +1591,12 @@ sprite_frames = SubResource("SpriteFrames_cvj6v")
 animation = &"demonio_negro_aparecer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(0, -18)
 rotation = -3.14159
-scale = Vector2(2.46043, -2.4983)
-shape = SubResource("CircleShape2D_gc35q")
+shape = SubResource("CapsuleShape2D_xlagk")
 
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(2, -19)
-scale = Vector2(0.906565, 2.00473)
-shape = SubResource("RectangleShape2D_lvyic")
+position = Vector2(2, -17)
+shape = SubResource("CapsuleShape2D_g6pgn")

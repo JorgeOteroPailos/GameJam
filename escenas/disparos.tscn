@@ -406,7 +406,7 @@ script = ExtResource("1_pa5s1")
 position = Vector2(18, -26)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_o4hgd")
-animation = &"hit_black"
+animation = &"default_white"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

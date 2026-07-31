@@ -190,7 +190,8 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gj0cs"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4y5w"]
+height = 52.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ck3sb"]
 animations = [{
@@ -300,13 +301,12 @@ script = ExtResource("1_yppqc")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -33)
 sprite_frames = SubResource("SpriteFrames_2vb47")
-animation = &"invulnerabilidad"
+animation = &"run_arriba_diagonal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 5)
+position = Vector2(-1, -16)
 rotation = 3.14159
-scale = Vector2(1.4232, 0.7028)
-shape = SubResource("CircleShape2D_gj0cs")
+shape = SubResource("CapsuleShape2D_n4y5w")
 
 [node name="barra_vida" type="CanvasLayer" parent="."]
 
