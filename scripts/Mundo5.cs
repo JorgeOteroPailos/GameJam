@@ -49,10 +49,10 @@ public partial class Mundo5 : MundoBase
 						circulo.color=5;
 					}
 					
-					if(circulo.esJefe){
+					if(circulo is BossCirculo boss){
 						ajuste++;
-						circulo.color=6;
-						circulo.VELOCIDAD/=3.3f;
+						boss.color=6;
+						boss.VELOCIDAD/=3.3f;
 					}
 					spawnearEnemigo(circulo);
 				}

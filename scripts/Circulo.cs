@@ -3,12 +3,10 @@ using System;
 
 public partial class Circulo : CharacterBody2D
 {
-	private bool isDying = false;
+	protected bool isDying = false;
 	private bool isAppearing = false;
 	
 	public PackedScene BulletScene = GD.Load<PackedScene>("res://escenas/disparos.tscn");
-	
-	[Export] public bool esJefe = false;
 
 	public String colorEscrito=""; 
 	
@@ -28,7 +26,7 @@ public partial class Circulo : CharacterBody2D
 	AnimatedSprite2D sprite;
 	
 	private float shootCooldown = 5.0f; // tiempo mínimo entre disparos en segundos
-	private Timer shootTimer;
+	protected Timer shootTimer;
 
 	public override void _Ready()
 	{
@@ -43,10 +41,6 @@ public partial class Circulo : CharacterBody2D
 		
 		var area = GetNode<Area2D>("DamageArea");
 		area.BodyEntered += OnBodyEntered;
-		
-		if (esJefe){
-			volverJefe();
-		}
 		
 		shootTimer = new Timer();
 		shootTimer.WaitTime = shootCooldown;
@@ -166,59 +160,6 @@ public partial class Circulo : CharacterBody2D
 				sprite.Play(anim);
 		}
 		
-		if(esJefe && shootTimer.IsStopped()){
-			Shoot();
-		}
-		
-	}
-	
-	private async void Shoot()
-	{
-		// 1. INICIAR EL TIMER DE INMEDIATO para bloquear llamadas en los siguientes frames
-		shootTimer.Start();
-
-		Vector2 origen = GlobalPosition;
-		Vector2 objetivo = player.Position;
-		Vector2 direccionBase = (objetivo - origen).Normalized();
-
-		float[] angulosOffset = new float[] { -0.26f, 0.0f, 0.26f };
-
-		foreach (float offsetAngle in angulosOffset)
-		{
-			if (isDying || !IsInstanceValid(this)) 
-				return;
-
-			Vector2 direccionBala = direccionBase.Rotated(offsetAngle);
-
-			Bullet bullet = (Bullet)BulletScene.Instantiate();
-			bullet.Position = origen;
-			bullet.Velocity = direccionBala;
-			bullet.color = 7; // negro
-			bullet.esDeJefe = true;
-			bullet.Speed=VELOCIDAD_DISPAROS;
-
-			GetTree().CurrentScene.AddChild(bullet);
-
-			// Esperar entre cada bala de la ráfaga
-			await ToSignal(GetTree().CreateTimer(0.15f), SceneTreeTimer.SignalName.Timeout);
-		}
-	}
-	
-	public void volverJefe(){
-		this.VELOCIDAD/=1.5f;
-
-		
-		GD.Print("el jefe ahora es negro y color"+this.color);
-		
-		// Triplicar el tamaño del sprite
-		this.Scale *= new Vector2(3, 3);
-		
-		// Ajustar el tamaño de la hitbox también
-		if (collisionShape2D.Shape is CircleShape2D circle){
-			//circle.Radius *= 3;
-		}else if (collisionShape2D.Shape is RectangleShape2D rect){
-			//rect.Size *= new Vector2(1, 1);
-		}
 	}
 	
 	/*

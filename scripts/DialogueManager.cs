@@ -113,6 +113,12 @@ public partial class DialogueManager : Node
 
 		using (var file = FileAccess.Open(path, FileAccess.ModeFlags.Read))
 		{
+			if (file == null)
+			{
+				GD.PrintErr($"Error: No se pudo abrir el archivo de diálogo en {path}");
+				return null;
+			}
+
 			int currentLine = 0;
 
 			while (!file.EofReached())
